@@ -8,7 +8,7 @@
 
 /* ios7 specific styles */
 .km-ios7 .km-view .km-content {
-    background-color: #af9577;
+    background-color: #EFC94C;
 }
 .km-ios7 .k-list,
 .km-ios7 .k-slider,
@@ -99,7 +99,7 @@
 /* windows phone specific styles */
 .km-wp .km-view .km-content,
 .km-wp .km-view .km-navbar {
-    background-color: #af9577;
+    background-color: #EFC94C;
 }
 .km-wp .km-actionsheet li a {
     text-transform: lowercase;
@@ -287,4 +287,18 @@
         background: url("../images/cofeeCup-sprite@x2.png") no-repeat 0 0;
         background-size: 100%;
 	}
+}
+
+#login {
+    text-align:center;
+}
+
+#facebookButton {
+    margin: 30px ;
+    padding: 10px;
+    color: #FFFFFF ;
+    background-color: #3b5998 ; 
+    vertical-align: middle ;
+    font-size: 25px ;
+    border: none ;
 }

@@ -1,5 +1,7 @@
 (function($, console, doc) {
-	var announcementViewModel,
+	var debug = true,
+        loginViewModel,
+        announcementViewModel,
     	cardsViewModel,
         storesListViewModel,
     	AddCardViewModel,
@@ -232,6 +234,43 @@
 			that.set("announcements", announcements);
 		}
 	});
+    
+    loginViewModel = kendo.observable({		
+		load: function() {
+			var that = this;
+            
+		},
+        
+        loginUser: function() {
+			var that = this;
+            
+            jso_registerRedirectHandler(function(url) {
+                inAppBrowserRef = window.open(url, "_blank");
+                inAppBrowserRef.addEventListener('loadstop', function(e){LocationChange(e.url)}, false);
+            });
+            
+            jso_configure({
+                "facebook": {
+                    client_id: "537761576263898",
+                    redirect_uri: "http://www.facebook.com/connect/login_success.html",
+                    authorization: "https://www.facebook.com/dialog/oauth",
+                    presenttoken: "qs"
+                }
+            }, {"debug": debug});
+            
+            // jso_dump displays a list of cached tokens using outputlog if debugging is enabled.
+    		jso_dump();
+            
+            jso_ensureTokens({
+                "facebook": ["read_stream", "publish_stream"]
+            });		
+            
+            app.navigate("#home");
+		}
+        
+	});
+    
+    
 
 	cardsViewModel = kendo.observable({
 		cards : [],
@@ -282,6 +321,7 @@
     });
     
 	$.extend(window, {
+        loginViewModel: loginViewModel,
 		singleCardViewModel: new SingleCardViewModel(),
 		rewardsViewModel: new RewardsViewModel(),
 		addCardViewModel: new AddCardViewModel(),
@@ -291,3 +331,19 @@
 	});
     
 })(jQuery, console, document);
+
+    /*
+* Register a handler that detects redirects and
+* lets JSO to detect incomming OAuth responses and deal with the content.
+*/
+    
+function LocationChange(url){
+    outputlog("in location change");
+    url = decodeURIComponent(url);
+    outputlog("Checking location: " + url);
+    
+    jso_checkfortoken('facebook', url, function() {
+        outputlog("Closing InAppBrowser, because a valid response was detected.");
+        inAppBrowserRef.close();
+    });
+};

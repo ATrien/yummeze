@@ -1,8 +1,8 @@
 {
   "ProjectGuid": "c01056bd-0b45-4f53-a7cb-77d0c861a95f",
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "AppIdentifier": "com.telerik.JitterzMobile",
-  "ProjectName": "Jitterz Mobile",
+  "AppIdentifier": "com.yummeze.app",
+  "ProjectName": "Yummeze Mobile",
   "IsRunnable": "true",
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",
@@ -49,7 +49,7 @@
   "WP8ProductID": "{c01056bd-0b45-4f53-a7cb-77d0c861a95f}",
   "WP8PublisherID": "{271d983d-dceb-474e-ad8b-6471c1036a8d}",
   "Author": "",
-  "Description": "Jitterz Mobile",
+  "Description": "Yummeze Mobile",
   "WP8TileTitle": "",
   "WP8Publisher": "",
   "WP8Capabilities": [],
